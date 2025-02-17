@@ -1,53 +1,46 @@
-#import "../utils/style.typ": ziti, zihao
-#import "../utils/distr.typ": distr
-#import "../utils/datetime-display.typ": datetime-display
+#import "../style/font.typ": ziti, zihao
+#import "../style/distr.typ": distr
+#import "../style/uline.typ": uline
 
 #let cover-page(
   date: datetime.today(),
-  doctype: "master",
-  twoside: false,
-  anonymous: false,
   info: (:),
 ) = {
-  align(
-    center,
-    image(
-      "../assets/sjtu-logo.png",
-      width: 3cm,
-    ),
-  )
-
-  let cover-title = if doctype == "doctor" {
-    "上海交通大学博士学位论文"
-  } else {
-    "上海交通大学硕士学位论文"
-  }
-
-  align(
-    center,
-    text(font: ziti.songti, size: zihao.xiaoer)[#cover-title],
-  )
-
-  v(3.6cm)
-
-  align(
-    center,
-    text(font: ziti.songti, size: zihao.erhao, weight: "bold")[#info.title],
+  set page(
+    background: image("../assets/cover.png", width: 100%),
+    header: none
   )
 
   v(4cm)
+  align(
+    center,
+    text(font: ziti.songti, size: zihao.chuhao, weight: "medium")[本科毕业论文（设计）],
+  )
 
-  let info-key(zh) = (distr(zh, w: 5em))
+  align(
+    center,
+    text(font: ziti.songti, size: zihao.xiaoer, weight: "medium")[UNDERGRADUATE THESIS (PROJECT)],
+  )
 
-  let info-value(zh) = (
+  v(3cm)
+
+  let info-key(zh) = (
     text(
-      zh,
+      distr(zh, w: 4em),
       font: ziti.songti,
-      size: zihao.sihao,
+      size: 16pt,
     )
   )
 
-  set text(font: ziti.heiti, size: zihao.sihao)
+  let info-value(zh) = uline(
+    25em, 
+    text(
+      zh,
+      font: ziti.songti,
+      size: 16pt,
+    )
+  )
+
   table(
     stroke: none,
     align: (x, y) => (
@@ -57,44 +50,20 @@
         right
       }
     ),
-    columns: (46%, 1%, 53%),
+    columns: (15%, 1%, 60%),
     inset: (right: 0em),
     column-gutter: (-0.3em, 1em),
     row-gutter: 0.7em,
-    [#info-key("姓名")],
-    [#text(weight: "bold")[：]],
-    [#if anonymous { } else {
-        info-value(info.name)
-      }],
-
-    [#info-key("学号")],
-    [#text(weight: "bold")[：]],
-    [#if anonymous { } else {
-        info-value(info.student_id)
-      }],
-
-    [#info-key("导师")],
-    [#text(weight: "bold")[：]],
-    [#if anonymous { } else {
-        info-value(info.supervisor)
-      }],
-
-    [#info-key("院系")], [#text(weight: "bold")[：]], [#info-value(info.school)],
-    [#info-key("学科/专业")], [#text(weight: "bold")[：]], [#info-value(info.major)],
-    [#info-key("申请学位")], [#text(weight: "bold")[：]], [#info-value(info.degree)],
+    info-key("题目"), text(weight: "bold")[:], info-value(info.title),
+    [], [], [],
+    [], [], [],
+    info-key("学院"), text(weight: "bold")[:], info-value(info.school),
+    info-key("专业"), text(weight: "bold")[:], info-value(info.major),
+    info-key("学号"), text(weight: "bold")[:], info-value(info.student_id),
+    info-key("学生姓名"), text(weight: "bold")[:], info-value(info.name),
+    info-key("指导教师"), text(weight: "bold")[:], info-value(info.supervisor),
+    info-key("起讫日期"), text(weight: "bold")[:], info-value(info.date),
   )
 
   linebreak()
-
-  align(
-    center,
-    text(font: ziti.songti, size: zihao.sihao, weight: "bold")[#datetime-display(date)],
-  )
-
-  pagebreak(
-    weak: true,
-    to: if twoside {
-      "odd"
-    },
-  )
 }

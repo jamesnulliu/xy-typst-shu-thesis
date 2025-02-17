@@ -1,74 +1,49 @@
 #import "../lib.typ": documentclass
 
 #let (
-  doctype,
-  date,
-  twoside,
-  anonymous,
   info,
   doc,
-  preface,
-  mainmatter,
-  appendix,
   cover,
-  cover-en,
   declare,
-  abstract,
-  abstract-en,
+  appendix,
   outline,
+  mainmatter,
+  conclusion,
+  abstract,
   bib,
   acknowledgement,
-  achievement,
 ) = documentclass(
-  doctype: "master", // 文档类型: "master" | "doctor"
-  date: datetime(year: 2024, month: 11, day: 11), // 日期，如果需要显示今天的日期，可以使用 datetime.today() 函数
-  twoside: true, // 双面模式
-  anonymous: false, // 盲审模式
   info: (
-    student_id: "520XXXXXXXX",
-    name: "张三",
-    name_en: "Zhang San",
-    degree: "工学硕士",
-    supervisor: "李四教授",
-    supervisor_en: "Prof. Li Si",
-    title: "上海交通大学学位论文格式模板",
-    title_en: "DISSERTATION TEMPLATE FOR MASTER DEGREE OF ENGINEERING IN SHANGHAI JIAO TONG UNIVERSITY",
+    student_id: "21XXXXX",
+    name: "塔尖",
+    supervisor: "塔瘪教授",
     school: "某某学院",
-    school_en: "School of XXXXXXX",
     major: "某某专业",
+    date: "1000-2000",
   ),
 )
 
 #show: doc
-
 #cover()
-
-#cover-en()
-
-#declare(
-  confidentialty-level: "internal", // 保密级别: "public" | "internal" | "secret" | "confidential"
-  confidentialty-year: 2, // 保密年份数，请根据保密级别的要求填写
-)
-
-#show: preface
+#declare()
 
 #abstract(
-  keywords: (
-    "学位论文",
-    "论文格式",
-    "规范化",
-    "模板",
-  ),
+  keywords: ("学位论文", "论文格式", "规范化", "模板"),
+  keywords-en: ("dissertation", "dissertation format", "standardization", "template")
 )[
-  学位论文是研究生从事科研工作的成果的主要表现，集中表明了作者在研究工作中获得的新的发明、理论或见解，是研究生申请硕士或博士学位的重要依据，也是科研领域中的重要文献资料和社会的宝贵财富。
+  摘要的内容需作者简要介绍本论文的主要内容主要为本人所完成的工作和创新点。
 
-  为了提高研究生学位论文的质量，做到学位论文在内容和格式上的规范化与统一化，特制作本模板。
-]
+  ……
 
-#abstract-en(keywords: ("dissertation", "dissertation format", "standardization", "template"))[
-  As a primary means of demonstrating research findings for postgraduate students, dissertation is a systematic and standardized record of the new inventions, theories or insights obtained by the author in the research work. It can not only function as an important reference when students pursue further studies, but also contribute to scientific research and social development.
+  (注：标题黑体小二号，正文宋体小四，行距20磅)
 
-  This template is therefore made to improve the quality of postgraduates' dissertations and to further standardize it both in content and in format.
+][
+  The content of the abstract requires the author to briefly introduce the main content of this paper, mainly for my work and innovation.
+
+  …….
+
+  (Times New Roman，小四号，行距20磅)
+
 ]
 
 #outline()
@@ -144,21 +119,16 @@
 == 图表格式
 
 #figure(
-  [#figure(
-    image(
-      "figures/energy-distribution.png",
-      width: 70%,
-    ),
-    gap: 0.3em,
-    kind: "image",
-    supplement: [图],
-    caption: [内热源沿径向的分布], // 中文图例
-  )<image>],
-  gap: 1em,
-  kind: "image-en",
-  supplement: [Figure],
+  image(
+    "figures/energy-distribution.png",
+    width: 70%,
+  ),
+  gap: 2em,
+  kind: "image",
+  supplement: [图],
   caption: [Energy distribution along radial], // 英文图例
-)
+)<image>
+
 #v(1.5em)
 
 // 图的引用请以 img 开头
@@ -170,45 +140,39 @@
 // 因为涉及续表，所以表的实现比较复杂且不易抽象成函数
 #let xubiao = state("xubiao")
 #figure(
-  figure(
-    table(
-      // 每列比例
-      columns: (25%, 25%, 25%, 25%),
-      table.header(
-        table.cell(
-          // 列数
-          colspan: 4,
-          {
-            context if xubiao.get() {
-              align(left)[*续@tbl:table*] // 请一定要在末尾给表添加标签(如<table>)，并在此处修改引用
-            } else {
-              v(-0.9em)
-              xubiao.update(true)
-            }
-          },
-        ),
-        table.hline(),
-        // 表头部分
-        [感应频率 #linebreak() (kHz)],
-        [感应发生器功率 #linebreak() (%×80kW)],
-        [工件移动速度 #linebreak() (mm/min)],
-        [感应圈与零件间隙 #linebreak() (mm)],
-        table.hline(stroke: 0.5pt),
+  table(
+    // 每列比例
+    columns: (25%, 25%, 25%, 25%),
+    table.header(
+      table.cell(
+        // 列数
+        colspan: 4,
+        {
+          context if xubiao.get() {
+            align(left)[*续@tbl:table*] // 请一定要在末尾给表添加标签(如<table>)，并在此处修改引用
+          } else {
+            v(-0.9em)
+            xubiao.update(true)
+          }
+        },
       ),
-      // 表格内容
-      ..for i in range(15) {
-        ([250], [88], [5900], [1.65])
-      },
       table.hline(),
+      // 表头部分
+      [感应频率 #linebreak() (kHz)],
+      [感应发生器功率 #linebreak() (%×80kW)],
+      [工件移动速度 #linebreak() (mm/min)],
+      [感应圈与零件间隙 #linebreak() (mm)],
+      table.hline(stroke: 0.5pt),
     ),
-    kind: "table-en",
-    supplement: [Table],
-    caption: [XXXXXXX], // 英文表例
+    // 表格内容
+    ..for i in range(15) {
+      ([250], [88], [5900], [1.65])
+    },
+    table.hline(),
   ),
-  gap: 1em,
   kind: "table",
   supplement: [表],
-  caption: [高频感应加热的基本参数], // 中文表例
+  caption: [高频感应加热的基本参数],
 )<table>
 
 == 公式格式
@@ -222,19 +186,13 @@ $ 1 / mu nabla^2 Alpha - j omega sigma Alpha - nabla(1/mu) times (nabla times Al
 
 本章介绍了……
 
-= 全文总结
-
-== 主要结论
-
-本文主要……
-
-== 研究展望
-
-更深入的研究……
+#conclusion[
+ 结论是毕业论文的总结，是整篇论文的归宿。应精炼、准确、完整。着重阐述自己的创造性成果及其在本研究领域中的意义、作用，还可进一步提出需要讨论的问题和建议。 
+]
 
 // 参考文献
 #bib(
-  bibfunc: bibliography("ref.bib", full: false),
+  bibfunc: bibliography("ref.bib"),
 ) // full: false 表示只显示已引用的文献，不显示未引用的文献；true 表示显示所有文献
 
 #show: appendix
@@ -243,20 +201,23 @@ $ 1 / mu nabla^2 Alpha - j omega sigma Alpha - nabla(1/mu) times (nabla times Al
 
 == 硬件配置
 
+#figure(
+  image(
+    "figures/energy-distribution.png",
+    width: 70%,
+  ),
+  gap: 2em,
+  kind: "image",
+  supplement: [图],
+  caption: [Energy distribution along radial], // 英文图例
+)<image1>
+
 ......
 
 == 软件工具
 
 ......
 
-#acknowledgement[
+#acknowledgement(location: "上海大学")[
   致谢主要感谢导师和对论文工作有直接贡献和帮助的人士和单位。致谢言语应谦虚诚恳，实事求是。
 ]
-
-#achievement(
-  papers: (
-    "Chen H, Chan C T. Acoustic cloaking in three dimensions using acoustic metamaterials[J]. Applied Physics Letters, 2007, 91:183518.",
-    "Chen H, Wu B I, Zhang B, et al. Electromagnetic Wave Interactions with a Metamaterial Cloak[J]. Physical Review Letters, 2007, 99(6):63903.",
-  ),
-  patents: ("第一发明人, 永动机[P], 专利申请号202510149890.0.",),
-)

@@ -1,4 +1,5 @@
-#import "../utils/style.typ": ziti
+#import "../style/font.typ": ziti, zihao
+#import "../style/figures.typ": figures
 #import "@preview/cuti:0.3.0": show-cn-fakebold
 #import "@preview/i-figured:0.2.4"
 
@@ -6,40 +7,38 @@
 #let doc(
   // documentclass 传入参数
   info: (:),
-  twoside: false,
   // 其他参数
-  fallback: false,  // 字体缺失时使用 fallback，不显示豆腐块
+  fallback: false, // 字体缺失时使用 fallback，不显示豆腐块
   fonts: (:),
   it,
 ) = {
   info = (
-    title: "上海交通大学学位论文格式模板",
-    author: "张三",
-  ) + info
+    (
+      title: "上海大学学位论文格式模板",
+      author: "张三",
+    )
+      + info
+  )
 
-  if twoside {
-    context {
-      if calc.odd(counter(page).get().first()) {
-        set page(margin: (top: 3.5cm, bottom: 4cm, left: 3cm, right: 2.5cm))
-      } else {
-        set page(margin: (top: 3.5cm, bottom: 4cm, left: 2.5cm, right: 3cm))
-      }
-    }
-  } else {
-    set page(margin: (top: 3.5cm, bottom: 4cm, left: 3cm, right: 2.5cm))
-  }
-  set text(hyphenate: false, font: ziti.songti)
-  set par(leading: 20pt)
+  set page(
+    margin: (top: 2.5cm, bottom: 2.5cm, left: 3cm, right: 2.5cm),
+    header: context {
+      text(
+        "上海大学本科毕业论文（设计）",
+        font: ziti.songti,
+        size: zihao.wuhao,
+      )
+      v(-10pt)
+      line(length: 100%, stroke: 1pt)
+    },
+    header-ascent: 0.5cm,
+  )
+
+  set text(font: ziti.songti, size: zihao.xiaosi)
+  set par(first-line-indent: 2em, leading: 16pt, spacing: 23pt)
 
   show: show-cn-fakebold
-  show figure: set align(center)
-  show table: set align(center)
-
-  show figure.caption: set par(leading: 10pt, justify: false)
-
-  show heading: i-figured.reset-counters.with(extra-kinds: ("image",))
-  show figure: i-figured.show-figure.with(extra-prefixes: (image: "img:"))
-  show math.equation: i-figured.show-equation
+  show: figures
 
   let fake-par = context {
     let b = par(box())

@@ -1,37 +1,30 @@
-#import "../utils/header.typ": no-numbering-page-header
-#import "../utils/heading.typ": no-numbering-first-heading
+// #import "../style/header.typ": page-header
+#import "../style/heading.typ": none-heading
 
 #let acknowledgement-page(
-  doctype: "master",
-  twoside: false,
-  anonymous: false,
+  info: (:),
+  date: none,
+  location: "上海大学",
   body,
 ) = {
-  pagebreak(
-    weak: true,
-    to: if twoside {
-      "odd"
-    },
-  )
-
-  if anonymous {
-    return
-  }
-
-  show: no-numbering-page-header.with(
-    doctype: doctype,
-    twoside: twoside,
-  )
-  show: no-numbering-first-heading
-
+  pagebreak(weak: true)
+  show: none-heading
   heading(level: 1)[致#h(1em)谢]
 
   body
+  {
+    set align(right)
+    [
+      #info.name
 
-  pagebreak(
-    weak: true,
-    to: if twoside {
-      "odd"
-    },
-  )
+      #location
+
+      #if date == none {
+        datetime.today().display("[year]年[month]月[day]日")
+      } else {
+        date
+      }
+    ]
+  }
+  pagebreak(weak: true)
 }

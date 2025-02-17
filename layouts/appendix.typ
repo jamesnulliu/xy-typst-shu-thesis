@@ -1,13 +1,9 @@
-#import "../utils/header.typ": appendix-page-header
-#import "../utils/heading.typ": appendix-first-heading
-
+#import "../style/heading.typ":appendix-first-heading, none-heading
 #let appendix(
-  doctype: "master",
-  twoside: false,
   body,
 ) = {
-  show: appendix-page-header.with(doctype: doctype, twoside: twoside)
-  show: appendix-first-heading.with(twoside: twoside)
+  show: none-heading
+  show: appendix-first-heading
 
   body
 }

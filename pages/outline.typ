@@ -1,28 +1,40 @@
-#import "../utils/style.typ": ziti, zihao
-#import "@preview/outrageous:0.3.0"
+#import "../style/font.typ": ziti, zihao
+// #import "@preview/outrageous:0.3.0"
 
 #let outline-page(
-  twoside: false,
   info: (:),
 ) = {
-  set par(first-line-indent: 2em)
+  show outline.entry: it => {
+    if it.element.supplement == [main] {
+      if it.level == 1 {
+        set text(font: ziti.heiti, size: 14pt)
+        // v(1em)
+        strong(it)
+      } else if it.level == 2 {
+        set text(font: ziti.songti, size: 12pt)
+        it
+      } else {
+        set text(font: ziti.songti, size: 11pt)
+        it
+      }
+    } else if it.level == 1 {
+      set text(font: ziti.heiti, size: 14pt)
+      // v(1em)
+      it
+    }
+  }
+  show outline: it => {
+    show heading: set align(center)
+    show heading: set text(font:ziti.heiti,size:18pt,weight: "bold")
+    it
+  }
 
-  show outline.entry: outrageous.show-entry.with(
-    ..outrageous.presets.typst,
-    font-weight: ("bold", auto),
-  )
-
+  v(3em)
   context outline(
     title: [目#h(1em)录],
-    target: selector(heading).after(here()),
-    indent: 2em,
+    indent: 1em,
     depth: 3,
   )
 
-  pagebreak(
-    weak: true,
-    to: if twoside {
-      "odd"
-    },
-  )
+  pagebreak(weak: true)
 }
