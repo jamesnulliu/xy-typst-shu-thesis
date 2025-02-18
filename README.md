@@ -17,9 +17,13 @@
 
 1. 在 VS Code 中安装 [Tinymist Typst](https://marketplace.visualstudio.com/items?itemName=myriad-dreamin.tinymist) 插件，负责语法高亮, 错误检查和 PDF 预览。
 
-2. 按下 `Ctrl + Shift + P`(Windows) / `Command + Shift + P`(MacOS) 打开命令界面，输入 `Typst: Show available Typst templates (gallery) for picking up a template` 打开 Tinymist 提供的 Template Gallery，然后从里面找到 `shu-thesis`，点击 `❤` 按钮进行收藏，以及点击 `+` 号，就可以创建对应的论文模板了。
+2. 按照如下命令
+   - 按下 `Ctrl + Shift + P`(Windows) / `Command + Shift + P`(MacOS) 打开命令界面
+   - 输入 `Typst: Initialize a New Typst Project based on a Template` 并点击 
+   - 输入 `@preview/modern-shu-thesis:0.1.0`并回车
+   - 选择一个空的目录
 
-3. 最后用 VS Code 打开生成的目录，打开 `thesis.typ` 文件，按下 `Ctrl + K V`(Windows) / `Command + K V`(MacOS) 或者是点击右上角的按钮进行实时编辑和预览。
+3. 最后用 VS Code 打开指定的目录，打开 `thesis.typ` 文件，按下 `Ctrl + K V`(Windows) / `Command + K V`(MacOS) 或者是点击右上角的按钮进行实时编辑和预览。
 
 #### 使用 GitHub 仓库版本
 
@@ -33,7 +37,7 @@
 
 Typst 提供了官方的 Web App，支持像 Overleaf 一样在线编辑。
 
-实际上，我们只需要在 [Web App](https://typst.app/?template=shu-thesis&version=0.1.0) 中的 `Start from template` 里选择 `shu-thesis`，即可在线创建模板并使用。
+实际上，我们只需要在 [Web App](https://typst.app/) 中的 `Start from template` 里选择 `modern-shu-thesis`，即可在线创建模板并使用。
 
 **但是 Web App 并没有安装本地 Windows 或 MacOS 所拥有的字体，所以字体上可能存在差异，所以推荐本地编辑！**
 
