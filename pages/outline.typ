@@ -5,27 +5,24 @@
   info: (:),
 ) = {
   show outline.entry: it => {
-    if it.element.supplement == [main] {
-      if it.level == 1 {
-        set text(font: ziti.heiti, size: 14pt)
-        // v(1em)
-        strong(it)
-      } else if it.level == 2 {
-        set text(font: ziti.songti, size: 12pt)
-        it
+    if it.level == 1 {
+      set text(font: ziti.heiti, size: 14pt)
+      if it.element.supplement == [main] { 
+        strong(it) 
       } else {
-        set text(font: ziti.songti, size: 11pt)
         it
       }
-    } else if it.level == 1 {
-      set text(font: ziti.heiti, size: 14pt)
-      // v(1em)
+    } else if it.level == 2 {
+      set text(font: ziti.songti, size: 12pt)
+      it
+    } else {
+      set text(font: ziti.songti, size: 11pt)
       it
     }
   }
   show outline: it => {
     show heading: set align(center)
-    show heading: set text(font:ziti.heiti,size:18pt,weight: "bold")
+    show heading: set text(font: ziti.heiti, size: 18pt, weight: "bold")
     it
   }
 

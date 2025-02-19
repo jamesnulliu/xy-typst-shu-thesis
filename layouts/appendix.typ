@@ -6,6 +6,8 @@
   show: none-heading
   show: appendix-first-heading
   show: figures.with(appendix: true)
+  show heading.where(level: 2): set heading(outlined: false)
+  show heading.where(level: 3): set heading(outlined: false)
   set par(
     first-line-indent: 2em,
     leading: 21pt - 1em,
