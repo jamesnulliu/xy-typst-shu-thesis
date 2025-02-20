@@ -24,23 +24,30 @@
   set page(
     margin: (top: 2.5cm, bottom: 2.5cm, left: 3cm, right: 2.5cm),
     header: context {
-      text(
-        "上海大学本科毕业论文（设计）",
-        font: ziti.songti,
-        size: zihao.wuhao,
+      box(
+        width:100%,
+        stroke: (bottom: 1pt),
+        inset:(bottom:4pt),
+        text(
+          "上海大学本科毕业论文（设计）",
+          font: ziti.songti,
+          size: zihao.wuhao,
+        ),
       )
-      v(-0.5em)
-      line(length: 100%, stroke: 1pt)
     },
     header-ascent: 0.3cm,
   )
 
-  set text(font: ziti.songti, size: zihao.xiaosi)
+  set text(
+    font: ziti.songti,
+    size: zihao.xiaosi,
+    top-edge: "ascender",
+    bottom-edge: "descender",
+  )
   set par(
     first-line-indent: 2em,
-    leading: 24pt - 1em,
-    spacing: 24pt - 1em,
-    justify: true,
+    spacing: 0.3em,
+    leading: 0.3em,
   )
 
   show: show-cn-fakebold

@@ -13,7 +13,9 @@
       weight: "regular",
       size: zihao.xiaoer,
     )
+    v(15pt)
     it.body
+    v(15pt)
   }
   pagebreak(weak: true)
   body
@@ -35,10 +37,12 @@
     set text(font: ziti.heiti)
     set par(first-line-indent: 0em)
     if it.level == 1 {
+      set align(center)
       set text(weight: "bold", size: zihao.xiaoer)
       pagebreak(weak: true)
-      v(18pt)
+      v(15pt)
       counter(heading).display() + h(0.5em) + it.body
+      v(15pt)
     } else if it.level == 2 {
       set text(weight: "regular", size: zihao.sihao)
       counter(heading).display() + h(0.5em) + it.body
@@ -69,8 +73,9 @@
     if it.level == 1 {
       set text(weight: "bold", size: zihao.xiaoer)
       pagebreak(weak: true)
-      v(18pt)
+      v(15pt)
       counter(heading).display() + h(0.5em) + it.body
+      v(15pt)
     } else if it.level == 2 {
       set text(weight: "regular", size: zihao.sihao)
       counter(heading).display() + h(0.5em) + it.body

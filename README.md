@@ -5,6 +5,8 @@
 这是上海大学本科生学位论文的 [Typst 模板](https://typst.app/universe/package/shu-thesis)
 ，它能够简洁、快速、持续生成 PDF 格式的毕业论文，它基于本科生院官方提供的模板进行开发。基于本科生院提供的 [word 模板](https://cj.shu.edu.cn/DataInterface/上海大学本科毕业论文（设计）撰写格式模板.pdf) 进行开发。
 
+锐评：学校的word模版前后的页面边距都不一样。
+
 ## 使用
 
 快速浏览效果: 查看 [thesis.pdf](https://github.com/XY-cpp/typst-shu-thesis/releases/latest/download/thesis.pdf)，样例论文源码：查看 [thesis.typ](https://github.com/XY-cpp/typst-shu-thesis/blob/main/template/thesis.typ)

@@ -8,7 +8,6 @@
   show table: set align(center)
 
   show heading: i-figured.reset-counters.with(extra-kinds: ("image",))
-  let unarys = ((..nums) => nums.pos().map(str).join(".") + ")")
   show figure: i-figured.show-figure.with(
     extra-prefixes: (image: "img:"),
     numbering: if not appendix { "1.1" } else { "A1" },

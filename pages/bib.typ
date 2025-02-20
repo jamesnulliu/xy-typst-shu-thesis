@@ -6,7 +6,6 @@
 ) = {
   pagebreak(weak: true)
   show: none-heading
-  v(2em)
   set bibliography(
     title: "参考文献",
     style: "gb-7714-2015-numeric",

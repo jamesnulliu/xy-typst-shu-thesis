@@ -10,8 +10,8 @@
   show heading.where(level: 3): set heading(outlined: false)
   set par(
     first-line-indent: 2em,
-    leading: 21pt - 1em,
-    spacing: 21pt - 1em,
+    leading: 20pt - 1em,
+    spacing: 20pt - 1em,
     justify: true,
   )
   body
