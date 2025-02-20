@@ -20,7 +20,7 @@
 2. 按照如下命令
    - 按下 `Ctrl + Shift + P`(Windows) / `Command + Shift + P`(MacOS) 打开命令界面
    - 输入 `Typst: Initialize a New Typst Project based on a Template` 并点击 
-   - 输入 `@preview/modern-shu-thesis:0.1.1`并回车
+   - 输入 `@preview/modern-shu-thesis`并回车
    - 选择一个空的目录
 
 3. 最后用 VS Code 打开指定的目录，打开 `thesis.typ` 文件，按下 `Ctrl + K V`(Windows) / `Command + K V`(MacOS) 或者是点击右上角的按钮进行实时编辑和预览。
