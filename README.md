@@ -7,7 +7,7 @@
 
 ## 使用
 
-快速浏览效果: 查看 [thesis.pdf](https://github.com/XY-cpp/typst-shu-thesis/releases/download/0.1.1/thesis.pdf)，样例论文源码：查看 [thesis.typ](https://github.com/XY-cpp/typst-shu-thesis/blob/main/template/thesis.typ)
+快速浏览效果: 查看 [thesis.pdf](https://github.com/XY-cpp/typst-shu-thesis/releases/latest/download/thesis.pdf)，样例论文源码：查看 [thesis.typ](https://github.com/XY-cpp/typst-shu-thesis/blob/main/template/thesis.typ)
 
 **你只需要修改 `thesis.typ` 文件即可，基本可以满足你的所有需求。**
 
