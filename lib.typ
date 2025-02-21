@@ -10,6 +10,7 @@
 #import "pages/acknowledgement.typ": acknowledgement-page
 #import "pages/conclusion.typ": conclusion-page
 #import "pages/under-cover.typ": under-cover-page
+#import "style/figures.typ": algox, tablex
 
 #let documentclass(
   info: (:),

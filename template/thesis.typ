@@ -1,4 +1,4 @@
-#import "../lib.typ": documentclass
+#import "../lib.typ": documentclass, algox, tablex
 
 #let (
   info,
@@ -12,7 +12,7 @@
   abstract,
   bib,
   acknowledgement,
-  under-cover
+  under-cover,
 ) = documentclass(
   info: (
     title: "基于nana的nini",
@@ -31,7 +31,7 @@
 
 #abstract(
   keywords: ("学位论文", "论文格式", "规范化", "模板"),
-  keywords-en: ("dissertation", "dissertation format", "standardization", "template")
+  keywords-en: ("dissertation", "dissertation format", "standardization", "template"),
 )[
   摘要的内容需作者简要介绍本论文的主要内容主要为本人所完成的工作和创新点。
 
@@ -101,14 +101,15 @@
 
 
 
+
 = 图表格式
 
+== 图格式
 #figure(
   image(
     "figures/energy-distribution.png",
     width: 70%,
   ),
-  gap: 2em,
   kind: "image",
   supplement: [图],
   caption: [Energy distribution along radial], // 英文图例
@@ -119,6 +120,7 @@
 // 图的引用请以 img 开头
 如 @img:image 所示，......
 
+== 表格格式
 // 表的引用请以 tbl 开头
 我们来看 @tbl:table，
 
@@ -127,43 +129,22 @@
 \
 \
 
-// 因为涉及续表，所以表的实现比较复杂且不易抽象成函数
-#let xubiao = state("xubiao")
-#figure(
-  table(
-    // 每列比例
-    columns: (25%, 25%, 25%, 25%),
-    table.header(
-      table.cell(
-        // 列数
-        colspan: 4,
-        {
-          context if xubiao.get() {
-            align(left)[*续@tbl:table*] // 请一定要在末尾给表添加标签(如<table>)，并在此处修改引用
-          } else {
-            v(-0.9em)
-            xubiao.update(true)
-          }
-        },
-      ),
-      table.hline(),
-      // 表头部分
-      [感应频率 #linebreak() (kHz)],
-      [感应发生器功率 #linebreak() (%×80kW)],
-      [工件移动速度 #linebreak() (mm/min)],
-      [感应圈与零件间隙 #linebreak() (mm)],
-      table.hline(stroke: 0.5pt),
-    ),
-    // 表格内容
-    ..for i in range(15) {
-      ([250], [88], [5900], [1.65])
-    },
-    table.hline(),
+#tablex(
+  ..for i in range(15) {
+    ([250], [88], [5900], [1.65])
+  },
+  header: (
+    [感应频率 #linebreak() (kHz)],
+    [感应发生器功率 #linebreak() (%×80kW)],
+    [工件移动速度 #linebreak() (mm/min)],
+    [感应圈与零件间隙 #linebreak() (mm)],
   ),
-  kind: "table",
-  supplement: [表],
-  caption: [高频感应加热的基本参数],
-)<table>
+  columns: (1fr, 1fr, 1fr, 1fr),
+  colnum: 4,
+  caption: [66666666],
+  label-name: "table",
+)
+
 
 == 公式格式
 
@@ -172,18 +153,49 @@
 
 $ 1 / mu nabla^2 Alpha - j omega sigma Alpha - nabla(1/mu) times (nabla times Alpha) + J_0 = 0 $<equation>
 
+== 算法格式
+我要引用 @algo:algorithm
+
+算法也可以续：
+#v(10em)
+#[
+  #import "@preview/lovelace:0.2.0": *
+  #algox(
+    label-name: "algorithm",
+    caption: [欧几里得辗转相除],
+    pseudocode(
+      no-number,
+      [#h(-1.25em) *input:* integers $a$ and $b$],
+      no-number,
+      [#h(-1.25em) *output:* greatest common divisor of $a$ and $b$],
+      [*while* $a != b$ *do*],
+      ind,
+      [*if* $a > b$ *then*],
+      ind,
+      $a <- a - b$,
+      ded,
+      [*else*],
+      ind,
+      $b <- b - a$,
+      ded,
+      [*end*],
+      ded,
+      [*end*],
+      [*return* $a$],
+    ),
+  )
+]
+
 == 本章小结
 
 本章介绍了……
 
 #conclusion[
- 结论是毕业论文的总结，是整篇论文的归宿。应精炼、准确、完整。着重阐述自己的创造性成果及其在本研究领域中的意义、作用，还可进一步提出需要讨论的问题和建议。 
+  结论是毕业论文的总结，是整篇论文的归宿。应精炼、准确、完整。着重阐述自己的创造性成果及其在本研究领域中的意义、作用，还可进一步提出需要讨论的问题和建议。
 ]
 
 // 参考文献
-#bib(
-  bibfunc: bibliography("ref.bib"),
-) // full: false 表示只显示已引用的文献，不显示未引用的文献；true 表示显示所有文献
+#bib(bibfunc: bibliography("ref.bib")) // full: false 表示只显示已引用的文献，不显示未引用的文献；true 表示显示所有文献
 
 #show: appendix
 
@@ -197,7 +209,7 @@ $ 1 / mu nabla^2 Alpha - j omega sigma Alpha - nabla(1/mu) times (nabla times Al
 
 （3）公式推导与证明、调查表等；
 
-（4）辅助性教学工具或表格； 
+（4）辅助性教学工具或表格；
 
 （5）其他需要展示或说明的内容
 
@@ -244,11 +256,11 @@ $ 1 / mu nabla^2 Alpha - j omega sigma Alpha - nabla(1/mu) times (nabla times Al
 ......
 
 #acknowledgement(location: "上海大学")[
-表达真情实感即可。
+  表达真情实感即可。
 
-（致谢部分切勿照搬，本部分内容也在论文查重范围之内）
+  （致谢部分切勿照搬，本部分内容也在论文查重范围之内）
 
-（格式：宋体，Times New Roman小四号字，两边对齐，首行缩进2个字符，行距23磅，字符间距为“标准”）
+  （格式：宋体，Times New Roman小四号字，两边对齐，首行缩进2个字符，行距23磅，字符间距为“标准”）
 
 ]
 
