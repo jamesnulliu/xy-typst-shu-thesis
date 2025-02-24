@@ -25,9 +25,9 @@
     margin: (top: 2.5cm, bottom: 2.5cm, left: 3cm, right: 2.5cm),
     header: context {
       box(
-        width:100%,
+        width: 100%,
         stroke: (bottom: 1pt),
-        inset:(bottom:4pt),
+        inset: (bottom: 4pt),
         text(
           "上海大学本科毕业论文（设计）",
           font: ziti.songti,
@@ -45,7 +45,7 @@
     bottom-edge: "descender",
   )
   set par(
-    first-line-indent: 2em,
+    first-line-indent: (amount: 2em, all: true),
     spacing: 0.3em,
     leading: 0.3em,
   )

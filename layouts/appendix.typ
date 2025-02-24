@@ -9,7 +9,7 @@
   show heading.where(level: 2): set heading(outlined: false)
   show heading.where(level: 3): set heading(outlined: false)
   set par(
-    first-line-indent: 2em,
+    first-line-indent: (amount: 2em, all: true),
     leading: 20pt - 1em,
     spacing: 20pt - 1em,
     justify: true,

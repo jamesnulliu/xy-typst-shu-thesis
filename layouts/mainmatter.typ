@@ -10,7 +10,7 @@
   show: main-heading
   set text(font: ziti.songti, size: zihao.xiaosi)
   set par(
-    first-line-indent: 2em,
+    first-line-indent: (amount: 2em, all: true),
     leading: 23pt - 1em,
     spacing: 23pt - 1em,
     justify: true,
