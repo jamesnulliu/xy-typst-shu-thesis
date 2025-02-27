@@ -1,9 +1,8 @@
-#import "../style/heading.typ": appendix-first-heading, none-heading
+#import "../style/heading.typ": appendix-first-heading
 #import "../style/figures.typ": figures
 #let appendix(
   body,
 ) = {
-  show: none-heading
   show: appendix-first-heading
   show: figures.with(appendix: true)
   show heading.where(level: 2): set heading(outlined: false)

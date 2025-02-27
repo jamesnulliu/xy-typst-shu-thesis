@@ -67,6 +67,7 @@
     supplement: "appendix",
   )
   counter(heading).update(0)
+  show heading.where(level: 1): set align(center)
   show heading: it => {
     set text(font: ziti.heiti)
     set par(first-line-indent: 0em)
