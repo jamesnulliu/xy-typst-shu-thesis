@@ -47,10 +47,10 @@ Typst 提供了官方的 Web App，支持像 Overleaf 一样在线编辑。
 
 ## License
 
-本项目采用 MIT 许可证。
+本项目采用 Apache 许可证。
 
 图片 `assets/cover.png` `assets/under-cover.png`：由上海大学提供，版权归上海大学所有，仅限本毕业设计使用。
 
-This project is licensed under the MIT License.
+This project is licensed under the Apache License.
 
 The images `assets/cover.png` and `assets/under-cover.png` are provided by Shanghai University, and the copyright is owned by Shanghai University. They are for use only in this graduation project.
