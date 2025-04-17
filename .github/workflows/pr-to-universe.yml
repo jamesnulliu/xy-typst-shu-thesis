@@ -54,4 +54,5 @@ jobs:
             cp /tmp/typship-x86_64-unknown-linux-gnu/typship /usr/local/bin
           popd
           printf "${{ secrets.TYPST_PACKAGES_TOKEN }}" | typship login universe
+          expect ./.github/workflows/scripts/typship-login-universe.expect "${{ secrets.TYPST_PACKAGES_TOKEN }}"
           expect ./.github/workflows/scripts/typship-push-universe.expect
