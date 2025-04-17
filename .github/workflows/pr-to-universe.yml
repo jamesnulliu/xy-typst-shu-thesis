@@ -19,6 +19,11 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
+      - name: Install dependencies
+        run: |
+          apt-get update
+          apt-get install -y expect
+
       - name: Determine and check package metadata
         shell: bash
         run: |
